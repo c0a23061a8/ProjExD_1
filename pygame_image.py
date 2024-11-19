@@ -21,14 +21,7 @@ def main():
         for event in pg.event.get():
             if event.type == pg.QUIT: return
         key_lst = pg.key.get_pressed() # その瞬間に各キーが押されているかを表したリスト
-        if key_lst[pg.K_UP]:
-            img3_rct.move_ip((0,-1))
-        elif key_lst[pg.K_DOWN]:
-            img3_rct.move_ip((0,1))
-        elif key_lst[pg.K_LEFT]:
-            img3_rct.move_ip((-1,0))
-        elif key_lst[pg.K_RIGHT]:
-            img3_rct.move_ip((2,0))
+        img3_rct.move_ip((-key_lst[pg.K_LEFT]+2*key_lst[pg.K_RIGHT],key_lst[pg.K_DOWN]-key_lst[pg.K_UP]))
         # 背景の大きな画像1枚目
         screen.blit(bg_img, [-x, 0]) # (0,0)に貼り付け
         screen.blit(bg_img_rev, [-x+1600, 0]) 

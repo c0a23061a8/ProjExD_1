@@ -22,20 +22,21 @@ def main():
             if event.type == pg.QUIT: return
         key_lst = pg.key.get_pressed() # その瞬間に各キーが押されているかを表したリスト
         if key_lst[pg.K_UP]:
-            img3_rct.move_ip((0,-1)) # move_ip(横座標の移動量,縦座標の移動量)
+            img3_rct.move_ip((0,-1))
         elif key_lst[pg.K_DOWN]:
             img3_rct.move_ip((0,1))
-        elif key_lst[pg.K_RIGHT]:
-            img3_rct.move_ip((1,0))
         elif key_lst[pg.K_LEFT]:
             img3_rct.move_ip((-1,0))
-        # 大きな画像1枚目
+        elif key_lst[pg.K_RIGHT]:
+            img3_rct.move_ip((2,0))
+        # 背景の大きな画像1枚目
         screen.blit(bg_img, [-x, 0]) # (0,0)に貼り付け
         screen.blit(bg_img_rev, [-x+1600, 0]) 
-        # 大きな画像2枚目
+        # 背景の大きな画像2枚目
         screen.blit(bg_img, [-x+3200, 0]) 
         screen.blit(bg_img_rev, [-x+4800, 0]) 
-        screen.blit(img3,img3_rct) # こうかとん
+
+        screen.blit(img3,(img3_rct[0]-x,img3_rct[1])) # こうかとん
         pg.display.update()
         tmr += 1        
         clock.tick(200)
